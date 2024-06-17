@@ -2,6 +2,15 @@ import { getCabin } from "@/lib/data-service";
 import { EyeOff, MapPin, UserRound } from "lucide-react";
 import Image from "next/image";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { cabinId: string };
+}) {
+  const { name } = await getCabin(params.cabinId);
+  return { title: `Cabin ${name}` };
+}
+
 export default async function Page({
   params,
 }: {

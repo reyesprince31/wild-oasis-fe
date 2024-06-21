@@ -1,3 +1,4 @@
+import TextExpander from "@/components/TextExpander";
 import { getCabin } from "@/lib/data-service";
 import { EyeOff, MapPin, UserRound } from "lucide-react";
 import Image from "next/image";
@@ -38,7 +39,9 @@ export default async function Page({
             Cabin {name}
           </h3>
 
-          <p className="text-lg text-primary mb-10">{description}</p>
+          <p className="text-lg text-primary mb-10">
+            <TextExpander>{description}</TextExpander>
+          </p>
 
           <ul className="flex flex-col gap-4 mb-7">
             <li className="flex gap-3 items-center">

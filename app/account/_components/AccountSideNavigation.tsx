@@ -1,6 +1,9 @@
+"use client";
+
 import SignOutButton from "./SignOutButton";
 import { Home, CalendarDays, User } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   {
@@ -21,13 +24,17 @@ const navLinks = [
 ];
 
 function SideNavigation() {
+  const pathname = usePathname();
+
   return (
     <nav className="border-r border-muted-foreground ">
       <ul className="flex flex-col gap-2 h-full text-lg ">
         {navLinks.map((link) => (
           <li key={link.name}>
             <Link
-              className={`py-3 px-5 hover:bg-primary hover:text-secondary transition-colors flex items-center gap-4 font-semibold text-primary`}
+              className={`py-3 px-5 hover:bg-primary hover:text-secondary transition-colors flex items-center gap-4 font-semibold text-primary ${
+                pathname === link.href ? "bg-primary" : ""
+              }`}
               href={link.href}>
               {link.icon}
               <span>{link.name}</span>
